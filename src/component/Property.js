@@ -1,24 +1,23 @@
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
-  CardHeader,
   CardMedia,
   Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
+import "./Property.css";
 import {
   BathtubOutlined,
   Favorite,
   FavoriteBorder,
   SingleBedOutlined,
+  CropOriginal,
 } from "@material-ui/icons";
-function Property({property}) {
+function Property({ property }) {
   const [favourite, setFavourite] = useState(false);
   return (
     <div>
-      <Card sx={{ maxWidth: 300 }} style={{ margin: "15px" }}>
+      <Card sx={{ maxWidth: 300 }} className="style_to_card">
         <CardMedia
           component="img"
           alt="green iguana"
@@ -26,42 +25,43 @@ function Property({property}) {
           image={property.imageurl}
         />
         <CardContent>
-          <Typography gutterBottom variant="span" component="div">
-           ${property.rent}
+          <Typography
+            className="top_text"
+            gutterBottom
+            variant="p"
+            component="div"
+          >
+            <span className="special_content">${property.rent}</span>
             /month{" "}
-          </Typography>
-          <Typography variant="span" onClick={()=>{setFavourite(!favourite)}}>
+            <Typography
+              variant="span"
+              onClick={() => {
+                setFavourite(!favourite);
+              }}
+            >
               {favourite ? (
-                <Favorite
-                  style={{
-                    border: "2px solid grey",
-                    borderRadius: "100%",
-                    padding: "2px",
-                  }}
-                />
+                <Favorite className="favourite_icons" />
               ) : (
-                <FavoriteBorder
-                  style={{
-                    border: "2px solid grey",
-                    borderRadius: "100%",
-                    padding: "2px",
-                  }}
-                />
+                <FavoriteBorder className="favourite_icons" />
               )}
             </Typography>
-          <Typography variant="h5">{property.title}</Typography>
-          <Typography variant="body2" color="text.secondary">
-           {property.address}
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+            {property.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" gutterBottom>
+            {property.address}
           </Typography>
           <hr />
-          <Typography>
-            <SingleBedOutlined />
-            <span>{property.bed}</span>
-            Beds
-            <BathtubOutlined />
-            <span>{property.bathrooms}</span>
-            Bathrooms
-            <span>{property.arealength}</span>X<span>{property.areabreadth}</span> m2
+          <Typography variant="p" className="bottom_text" gutterBottom>
+            <SingleBedOutlined className="icons_style" />
+            <span>{property.bed}</span> Beds
+            <BathtubOutlined className="icons_style" />
+            <span>{property.bathrooms}</span> Bathrooms
+            <CropOriginal className="icons_style" />
+            <span>{property.arealength}</span>X
+            <span>{property.areabreadth}</span> m
+            <span style={{ marginBottom: "20px" }}>2</span>
           </Typography>
         </CardContent>
       </Card>

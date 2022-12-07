@@ -1,0 +1,34 @@
+.style_to_card {
+    margin: 15px;
+}
+
+.top_text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+.special_content {
+    color: rgb(112, 99, 241);
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.bottom_text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+.icons_style {
+    color: rgb(112, 99, 241);
+    margin-left: 5px;
+}
+
+.favourite_icons {
+    color: rgb(112, 99, 241);
+    margin-left: 5px;
+    border: 2px solid rgb(112, 99, 241);
+    border-radius: 25px;
+    padding: 1px;
+    font-size: larger;
+    align-items: flex-end;
+}

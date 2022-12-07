@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const appApi = createApi({
   reducerPath: "appApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:9000/property",
+    // baseUrl: "http://localhost:9000/property",
+    baseUrl: "https://reunion-backend-pink.vercel.app/property",
   }),
   tagTypes: ["Property"],
   endpoints: (builder) => ({

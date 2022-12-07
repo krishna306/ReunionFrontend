@@ -1,8 +1,9 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import { Container, Row, Form, Col, Button, Spinner } from "react-bootstrap";
 import Property from "../component/Property";
 import { useGetSearchResultMutation } from "../services/appApi";
+import "./Home.css";
 function Home() {
   const [location, setLocation] = useState("");
   const [checkIn, setCheckIn] = useState("");
@@ -18,6 +19,7 @@ function Home() {
       rent: price,
       propertytype: propertyType,
     }).then((res) => {
+      console.log(res);
       setProperties(res.data);
     });
   }
@@ -35,45 +37,50 @@ function Home() {
   return (
     <div>
       <Container style={{ padding: "10px" }}>
-        <div style={{border:"1px solid grey",borderRadius:"10px",padding:"20px"}}>
+        <Typography variant="h4" gutterBottom style={{ marginLeft: "15px" }}>
+          Search Properties to rent
+        </Typography>
+        <div className="main_search_form">
           <Form onSubmit={handleSearch}>
             <Row>
-              <Col xs={3}>
+              <Col xs={3} className="filters">
                 <Form.Group>
-                  <Form.Label>Location</Form.Label>
+                  <Form.Label className="form_labels">Location</Form.Label>
                   <Form.Control
                     value={location}
+                    placeholder="Enter City Name"
                     onChange={(e) => setLocation(e.target.value)}
                     type="text"
-                    style={{ border: "0px" }}
+                    style={{ border: "0px", fontWeight: "700" }}
                   />
                 </Form.Group>
               </Col>
-              <Col xs={3}>
+              <Col xs={3} className="filters">
                 <Form.Group>
-                  <Form.Label>When</Form.Label>
+                  <Form.Label className="form_labels">When</Form.Label>
                   <Form.Control
                     onChange={(e) => {
                       setCheckIn(e.target.value);
                     }}
                     value={checkIn}
                     type="date"
-                    style={{ border: "0px" }}
+                    style={{ border: "0px", fontWeight: "700" }}
                     placeholder="Select Move-In Date"
                   />
                 </Form.Group>
               </Col>
-              <Col xs={2}>
+              <Col xs={2} className="filters">
                 <Form.Group>
-                  <Form.Label>Rent</Form.Label>
+                  <Form.Label className="form_labels">Rent</Form.Label>
                   <Form.Select
                     value={price}
                     onChange={(e) => {
                       setPrice(e.target.value);
                     }}
                     type="text"
-                    style={{ border: "0px" }}
+                    style={{ border: "0px", fontWeight: "700" }}
                   >
+                    <option value="">Select Price Range</option>
                     <option value="500-2500">$500-$2500</option>
                     <option value="2501-5000">$2501-$5000</option>
                     <option value="5001-7500">$5001-$7500</option>
@@ -84,22 +91,23 @@ function Home() {
                   </Form.Select>
                 </Form.Group>
               </Col>
-              <Col xs={2}>
+              <Col xs={2} className="filters">
                 <Form.Group>
-                  <Form.Label>PropertyType</Form.Label>
+                  <Form.Label className="form_labels">Property Type</Form.Label>
                   <Form.Select
                     onChange={(e) => {
                       setPropertyType(e.target.value);
                     }}
                     value={propertyType}
                     type="text"
-                    style={{ border: "0px" }}
+                    style={{ border: "0px", fontWeight: "700" }}
                   >
+                    <option value="">Select Porperty Type</option>
                     <option value="house">House</option>
                     <option value="home">Home</option>
                     <option value="bungalow">Bungalow</option>
-                    <option value="villa">villa</option>
-                    <option value="craftsman">craftsman</option>
+                    <option value="villa">Villa</option>
+                    <option value="craftsman">Craftsman</option>
                     <option value="apartments">Apartment</option>
                     <option value="cottage">Cottage</option>
                     <option value="farmhouse">Farmhouse</option>
@@ -107,8 +115,10 @@ function Home() {
                   </Form.Select>
                 </Form.Group>
               </Col>
-              <Col xs={2} style={{ paddingTop: "15px" }}>
-                <Button type="submit">Search</Button>
+              <Col xs={2} className="search_button">
+                <Button type="submit" id="button_custom_style">
+                  Search
+                </Button>
               </Col>
             </Row>
           </Form>
