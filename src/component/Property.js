@@ -61,7 +61,7 @@ function Property({property}) {
             <BathtubOutlined />
             <span>{property.bathrooms}</span>
             Bathrooms
-            <span>{property.area}</span>X<span>3</span> m2
+            <span>{property.arealength}</span>X<span>{property.areabreadth}</span> m2
           </Typography>
         </CardContent>
       </Card>
