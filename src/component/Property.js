@@ -47,7 +47,7 @@ function Property({ property }) {
             </Typography>
           </Typography>
           <Typography variant="h5" gutterBottom>
-            {property.title}
+            {property.title} <span>({property.propertytype.charAt(0).toUpperCase()+property.propertytype.slice(1)})</span>
           </Typography>
           <Typography variant="body2" color="text.secondary" gutterBottom>
             {property.address}
