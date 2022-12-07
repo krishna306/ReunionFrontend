@@ -23,17 +23,6 @@ function Home() {
       setProperties(res.data);
     });
   }
-  if (isLoading) {
-    return (
-      <div className="text-center mt-5">
-        <Spinner animation="border" variant="primary" role="status" />
-        <br />
-        <h2 className="py-2">Loading...</h2>
-      </div>
-    );
-  }
-  console.log(properties);
-
   return (
     <div>
       <Container style={{ padding: "10px" }}>
@@ -123,14 +112,24 @@ function Home() {
             </Row>
           </Form>
         </div>
-        <Grid container>
-          {properties.length > 0 &&
-            properties.map((property, idx) => (
-              <Grid item sm={4}>
-                <Property property={property} key={idx} />
-              </Grid>
-            ))}
-        </Grid>
+        {isLoading ? (
+          <>
+            <div className="text-center mt-5">
+              <Spinner animation="border" variant="primary" role="status" />
+              <br />
+              <h2 className="py-2">Loading...</h2>
+            </div>
+          </>
+        ) : (
+          <Grid container>
+            {properties.length > 0 &&
+              properties.map((property, idx) => (
+                <Grid item sm={4}>
+                  <Property property={property} key={idx} />
+                </Grid>
+              ))}
+          </Grid>
+        )}
       </Container>
     </div>
   );

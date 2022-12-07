@@ -4,7 +4,7 @@ export const appApi = createApi({
   reducerPath: "appApi",
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://localhost:9000/property",
-    baseUrl: "https://reunion-backend-pink.vercel.app/property",
+    baseUrl: "https://reunion-backend-as1b.onrender.com/property",
   }),
   tagTypes: ["Property"],
   endpoints: (builder) => ({
